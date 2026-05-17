@@ -4,8 +4,8 @@ import "fmt"
 
 func main() {
 	const BaseTariff = 0.45
-	const HightLoadTax = 15.0
-	const NightDiscount = 30.0
+	const HightLoadTax = 0.15
+	const NightDiscount = 0.30
 
 	fmt.Println("Выберите девайс:")
 	for {
@@ -34,7 +34,7 @@ func main() {
 			Total -= (Total * NightDiscount) / 100
 		}
 		if Power > 10 {
-			Total -= (Total * HightLoadTax) / 100
+			Total += (Total * HightLoadTax) / 100
 		}
 
 		switch {

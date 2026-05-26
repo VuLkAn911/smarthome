@@ -7,7 +7,6 @@ func main() {
 	const HightLoadTax = 0.15
 	const NightDiscount = 0.30
 
-	fmt.Println("Выберите девайс:")
 	for {
 		fmt.Print("Введите название прибора (или 'done'): ")
 		var name string
@@ -31,21 +30,24 @@ func main() {
 		Total := Power * BaseTariff
 
 		if NightMode == true {
-			Total -= (Total * NightDiscount) / 100
+			Total -= (Total * NightDiscount)
 		}
 		if Power > 10 {
-			Total += (Total * HightLoadTax) / 100
+			Total += (Total * HightLoadTax)
 		}
-
+		category := "Экономный"
 		switch {
 		case Power < 100:
-			fmt.Println("Экономный")
+			category = "Экономный"
 		case Power > 100 && Power < 1000:
-			fmt.Println("Стандартный")
+			category = "Стандартный"
 		case Power > 1000:
-			fmt.Println("Мощный")
+			category = "Мощный"
 
 		}
+
+		fmt.Println("---Отчет по прибору---")
+		fmt.Printf(" Прибор: %s [Категория: %s]\n Расход: %.2f\n Итоговая стоимость: %.2f\n", name, category, Power, Total)
 	}
 
 	fmt.Println("Расчет завершен")
